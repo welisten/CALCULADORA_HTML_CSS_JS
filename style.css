@@ -21,7 +21,7 @@ body{
     justify-content: center;
 }
 
-.wrapper{
+.container{
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
    
@@ -37,7 +37,7 @@ body{
     padding: 20px 35px;
 }
 
-.screen{
+.tela{
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     background: rgba(255, 255, 255, 0.75);
@@ -52,13 +52,13 @@ body{
     width: 326px;
 }
 
-.calc-button-row{
+.calc-botao-linha{
     display: flex;
     justify-content: space-between;
     margin: 5% 0;
 }
 
-.calc-button{
+.calc-botao{
     backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     background: rgba(255, 255, 255, 0.75);
@@ -72,7 +72,7 @@ body{
     height: 65px;
 }
 
-.calc-button:last-child{
+.calc-botao:last-child{
     backdrop-filter: blur (5.5px);
     -webkit-backdrop-filter: blur(5.5px);
     background: rgba(255, 255, 255, 0.75);
@@ -83,16 +83,16 @@ body{
     background: #d72880 ;
 }
 
-.calc-button:last-child:hover{
+.calc-botao:last-child:hover{
     background-color: inherit;
     color: inherit;
 }
 
-.calc-button:hover{
+.calc-botao:hover{
     background-color: inherit;
 }
 
-.calc-button:active{
+.calc-botao:active{
     background-color: #ffef78;
 }
 
