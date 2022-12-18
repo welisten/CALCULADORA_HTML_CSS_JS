@@ -1,91 +1,91 @@
-let runningTotal = 0
-let buffer = "0"
-let previousOperator
+let totalExecutado = 0
+let retentor = "0"
+let operadorAnterior
 
-const screen = document.querySelector('.screen')
+const tela = document.querySelector('.tela')
 
-function buttonClick(value){
-    if(isNaN(value)){
-        handleSymbol(value)
+function clickDoBotao(valor){
+    if(isNaN(valor)){
+        tratamentoSimbolo(valor)
     }else{
-        handleNumber(value)
+        tratamentoNumero(valor)
     }
-    screen.innerText = buffer
+    tela.innerText = retentor
 
 }
 
-function handleSymbol(symbol){
-    switch(symbol){
+function tratamentoSimbolo(simbolo){
+    switch(simbolo){
         case 'C':
-            buffer = '0'
-            runningTotal= 0
+            retentor = '0'
+            totalExecutado= 0
             break
         case '=':
-            if(previousOperator === null){
+            if(operadorAnterior === null){
                 return
             }
-            flushOperation(parseInt(buffer))
-            previousOperator = null
-            buffer = runningTotal
-            runningTotal = 0
+            executarOperacao(parseInt(retentor))
+            operadorAnterior = null
+            retentor = totalExecutado
+            totalExecutado = 0
             break
        case '←':
-            if(buffer.length ===1){
-                buffer = '0'
+            if(retentor.length ===1){
+                retentor = '0'
             }else{
-                buffer = buffer.substring(0, buffer.length -1)
+                retentor = retentor.substring(0, retentor.length -1)
             }
             break
         case '+':
         case '−':
         case '×':
         case '÷':
-            handleMath(symbol)
+            tratamento_Math(simbolo)
             break
 
     }
 }
 
-function handleMath(symbol){
-    if(buffer === '0'){
+function tratamento_Math(simbolo){
+    if(retentor === '0'){
         return
     }
 
-    const intBuffer = parseInt(buffer)
+    const intRetentor = parseInt(retentor)
 
-    if(runningTotal === 0){
-        runningTotal = intBuffer
+    if(totalExecutado === 0){
+        totalExecutado = intRetentor
     }else{
-        flushOperation(intBuffer)
+        executarOperacao(intRetentor)
     }
-    previousOperator = symbol
-    buffer = '0'
+    operadorAnterior = simbolo
+    retentor = '0'
 }
 
-function flushOperation(intBuffer){
-    if(previousOperator === '+'){
-        runningTotal += intBuffer
-    }else if(previousOperator === '−'){
-        runningTotal -= intBuffer
-    } else if(previousOperator === '×' ){
-        runningTotal *= intBuffer
-    }else if(previousOperator === '÷'){
-        runningTotal /= intBuffer
+function executarOperacao(intRetentor){
+    if(operadorAnterior === '+'){
+        totalExecutado += intRetentor
+    }else if(operadorAnterior === '−'){
+        totalExecutado -= intRetentor
+    } else if(operadorAnterior === '×' ){
+        totalExecutado *= intRetentor
+    }else if(operadorAnterior === '÷'){
+        totalExecutado /= intRetentor
     }
 }
 
-function handleNumber(numberString){
-    if (buffer === "0") {
-        buffer = numberString
+function tratamentoNumero(numeroString){
+    if (retentor === "0") {
+        retentor = numeroString
     }else{
-        buffer += numberString
+        retentor += numeroString
     }
 
 }
 
 function init(){
-    document.querySelector('.calc-buttons').addEventListener('click', function (event){
-        buttonClick(event.target.innerText)  
+    document.querySelector('.calc-botoes').addEventListener('click', function (event){
+        clickDoBotao(event.target.innerText)  
     })
 
 }
